@@ -1,6 +1,7 @@
 package i18n;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import ru.netology.entity.Country;
@@ -22,5 +23,15 @@ public class LocalizationServiceImplTest {
 
         Assertions.assertEquals(rusLocale, resultStr.equals(expectedRus));
         Assertions.assertNotEquals(rusLocale, resultStr.equals(expectedEng));
+    }
+
+    @Test
+    public void localeNullCountryTest() {
+        LocalizationService locale = new LocalizationServiceImpl();
+        String expected = null;
+
+        String resultStr = locale.locale(null);
+
+        Assertions.assertTrue(resultStr == null);
     }
 }
